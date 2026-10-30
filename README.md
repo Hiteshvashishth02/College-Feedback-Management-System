@@ -76,6 +76,12 @@ JWT_SECRET=your_jwt_secret_key
 PORT=5000
 ```
 
+## Vercel Deployment
+
+The root `vercel.json` configures separate `backend` (Express) and `frontend` (Create React App) services. Requests under `/api/*` are routed to the backend; all other paths are routed to the frontend. The frontend uses same-origin `/api` requests, so it does not need a backend URL at build time.
+
+Set `MONGODB_URI` and `JWT_SECRET` for the backend service in Vercel's environment settings. No service binding is configured because the frontend calls the backend through its public `/api` route and the backend does not call another service.
+
 ## Technologies Used
 
 - **Frontend:** React.js, Tailwind CSS, Axios
